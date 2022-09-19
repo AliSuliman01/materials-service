@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "alisuliman/micro_features",
-            "version": "2.2.3",
+            "version": "2.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/AliSuliman01/micro_features.git",
-                "reference": "45001c1d10727563005fa9db80ae73a4c30793a9"
+                "reference": "1c8505ef7f1fd8a9023c262adee772a790dd7b2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AliSuliman01/micro_features/zipball/45001c1d10727563005fa9db80ae73a4c30793a9",
-                "reference": "45001c1d10727563005fa9db80ae73a4c30793a9",
+                "url": "https://api.github.com/repos/AliSuliman01/micro_features/zipball/1c8505ef7f1fd8a9023c262adee772a790dd7b2e",
+                "reference": "1c8505ef7f1fd8a9023c262adee772a790dd7b2e",
                 "shasum": ""
             },
             "require": {
@@ -64,10 +64,10 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/AliSuliman01/micro_features/tree/2.2.3",
+                "source": "https://github.com/AliSuliman01/micro_features/tree/2.2.4",
                 "issues": "https://github.com/AliSuliman01/micro_features/issues"
             },
-            "time": "2022-09-19T20:04:44+00:00"
+            "time": "2022-09-19T23:44:32+00:00"
         },
         {
             "name": "brick/math",
