@@ -14,7 +14,7 @@ class StoreSpecialisationRequest extends FormRequest
             'duration'				=> 'integer|required' ,
             'level_id'				=> 'integer|required' ,
             'translations' => 'required|array',
-            'translations.*.language_code' => 'required|exists:languages,language_code,deleted_at,NULL',
+            'translations.*.language_code' => 'required',
             'translations.*.name' => 'required|string',
             'translations.*.description' => 'nullable|string',
             'translations.*.notes' => 'nullable|string',

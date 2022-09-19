@@ -12,7 +12,7 @@ class CategoryUpdateRequest extends ApiFormRequest
     {
         return [
             'translations' => 'required|array',
-            'translations.*.language_code' => 'required|exists:languages,id,deleted_at,NULL',
+            'translations.*.language_code' => 'required',
             'translations.*.name' => 'required|string',
             'translations.*.description' => 'nullable|string',
             'translations.*.notes' => 'nullable|string',
