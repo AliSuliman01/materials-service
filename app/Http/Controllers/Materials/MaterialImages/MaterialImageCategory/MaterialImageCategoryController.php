@@ -4,7 +4,7 @@
 namespace App\Http\Controllers\Materials\MaterialImages\MaterialImageCategory;
 
 
-use App\Helpers\Response;
+
 use App\Http\Controllers\Controller;
 use App\Domain\Materials\MaterialImages\MaterialImageCategory\Model\MaterialImageCategory;
 use App\Domain\Materials\MaterialImages\MaterialImageCategory\Actions\StoreMaterialImageCategoryAction;
@@ -18,18 +18,14 @@ use App\Http\ViewModels\Materials\MaterialImages\MaterialImageCategory\GetAllMat
 
 class MaterialImageCategoryController extends Controller
 {
-    public function __construct(){
-        $this->middleware('datatable_adapters')->only(['index']);
-        $this->middleware('auth.rest')->only(['store','update','destroy']);
-    }
     public function index(){
 
-        return response()->json(Response::success((new GetAllMaterialImageCategorysVM())->toArray()));
+        return response()->json(success((new GetAllMaterialImageCategorysVM())->toArray()));
     }
 
     public function show(MaterialImageCategory $materialImageCategory){
 
-        return response()->json(Response::success((new GetMaterialImageCategoryVM($materialImageCategory))->toArray()));
+        return response()->json(success((new GetMaterialImageCategoryVM($materialImageCategory))->toArray()));
     }
 
     public function store(StoreMaterialImageCategoryRequest $request){
@@ -40,7 +36,7 @@ class MaterialImageCategoryController extends Controller
 
         $materialImageCategory = StoreMaterialImageCategoryAction::execute($materialImageCategoryDTO);
 
-        return response()->json(Response::success((new GetMaterialImageCategoryVM($materialImageCategory))->toArray()));
+        return response()->json(success((new GetMaterialImageCategoryVM($materialImageCategory))->toArray()));
     }
 
     public function update(MaterialImageCategory $materialImageCategory, UpdateMaterialImageCategoryRequest $request){
@@ -51,12 +47,12 @@ class MaterialImageCategoryController extends Controller
 
         $materialImageCategory = UpdateMaterialImageCategoryAction::execute($materialImageCategory, $materialImageCategoryDTO);
 
-        return response()->json(Response::success((new GetMaterialImageCategoryVM($materialImageCategory))->toArray()));
+        return response()->json(success((new GetMaterialImageCategoryVM($materialImageCategory))->toArray()));
     }
 
     public function destroy(MaterialImageCategory $materialImageCategory){
 
-        return response()->json(Response::success(DestroyMaterialImageCategoryAction::execute($materialImageCategory)));
+        return response()->json(success(DestroyMaterialImageCategoryAction::execute($materialImageCategory)));
     }
 
 }

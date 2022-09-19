@@ -3,8 +3,6 @@
 
 namespace App\Http\Controllers\Materials\Projects\Projects;
 
-
-use App\Helpers\Response;
 use App\Http\Controllers\Controller;
 use App\Domain\Materials\Projects\Projects\Model\Project;
 use App\Domain\Materials\Projects\Projects\Actions\StoreProjectAction;
@@ -18,18 +16,14 @@ use App\Http\ViewModels\Materials\Projects\Projects\GetAllProjectsVM;
 
 class ProjectController extends Controller
 {
-    public function __construct(){
-        $this->middleware('datatable_adapters')->only(['index']);
-        $this->middleware('auth.rest')->only(['store','update','destroy']);
-    }
     public function index(){
 
-        return response()->json(Response::success((new GetAllProjectsVM())->toArray()));
+        return response()->json(success((new GetAllProjectsVM())->toArray()));
     }
 
     public function show(Project $project){
 
-        return response()->json(Response::success((new GetProjectVM($project))->toArray()));
+        return response()->json(success((new GetProjectVM($project))->toArray()));
     }
 
     public function store(StoreProjectRequest $request){
@@ -40,7 +34,7 @@ class ProjectController extends Controller
 
         $project = StoreProjectAction::execute($projectDTO);
 
-        return response()->json(Response::success((new GetProjectVM($project))->toArray()));
+        return response()->json(success((new GetProjectVM($project))->toArray()));
     }
 
     public function update(Project $project, UpdateProjectRequest $request){
@@ -51,12 +45,12 @@ class ProjectController extends Controller
 
         $project = UpdateProjectAction::execute($project, $projectDTO);
 
-        return response()->json(Response::success((new GetProjectVM($project))->toArray()));
+        return response()->json(success((new GetProjectVM($project))->toArray()));
     }
 
     public function destroy(Project $project){
 
-        return response()->json(Response::success(DestroyProjectAction::execute($project)));
+        return response()->json(success(DestroyProjectAction::execute($project)));
     }
 
 }

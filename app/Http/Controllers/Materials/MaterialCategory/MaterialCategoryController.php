@@ -4,7 +4,7 @@
 namespace App\Http\Controllers\Materials\MaterialCategory;
 
 
-use App\Helpers\Response;
+
 use App\Http\Controllers\Controller;
 use App\Domain\Materials\MaterialCategory\Model\MaterialCategory;
 use App\Domain\Materials\MaterialCategory\Actions\StoreMaterialCategoryAction;
@@ -18,18 +18,14 @@ use App\Http\ViewModels\Materials\MaterialCategory\GetAllMaterialCategorysVM;
 
 class MaterialCategoryController extends Controller
 {
-    public function __construct(){
-        $this->middleware('datatable_adapters')->only(['index']);
-        $this->middleware('auth.rest')->only(['store','update','destroy']);
-    }
     public function index(){
 
-        return response()->json(Response::success((new GetAllMaterialCategorysVM())->toArray()));
+        return response()->json(success((new GetAllMaterialCategorysVM())->toArray()));
     }
 
     public function show(MaterialCategory $materialCategory){
 
-        return response()->json(Response::success((new GetMaterialCategoryVM($materialCategory))->toArray()));
+        return response()->json(success((new GetMaterialCategoryVM($materialCategory))->toArray()));
     }
 
     public function store(StoreMaterialCategoryRequest $request){
@@ -40,7 +36,7 @@ class MaterialCategoryController extends Controller
 
         $materialCategory = StoreMaterialCategoryAction::execute($materialCategoryDTO);
 
-        return response()->json(Response::success((new GetMaterialCategoryVM($materialCategory))->toArray()));
+        return response()->json(success((new GetMaterialCategoryVM($materialCategory))->toArray()));
     }
 
     public function update(MaterialCategory $materialCategory, UpdateMaterialCategoryRequest $request){
@@ -51,12 +47,12 @@ class MaterialCategoryController extends Controller
 
         $materialCategory = UpdateMaterialCategoryAction::execute($materialCategory, $materialCategoryDTO);
 
-        return response()->json(Response::success((new GetMaterialCategoryVM($materialCategory))->toArray()));
+        return response()->json(success((new GetMaterialCategoryVM($materialCategory))->toArray()));
     }
 
     public function destroy(MaterialCategory $materialCategory){
 
-        return response()->json(Response::success(DestroyMaterialCategoryAction::execute($materialCategory)));
+        return response()->json(success(DestroyMaterialCategoryAction::execute($materialCategory)));
     }
 
 }

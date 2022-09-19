@@ -3,8 +3,6 @@
 
 namespace App\Http\Controllers\Materials\MaterialImages;
 
-
-use App\Helpers\Response;
 use App\Http\Controllers\Controller;
 use App\Domain\Materials\MaterialImages\Model\MaterialImage;
 use App\Domain\Materials\MaterialImages\Actions\StoreMaterialImageAction;
@@ -18,18 +16,14 @@ use App\Http\ViewModels\Materials\MaterialImages\GetAllMaterialImagesVM;
 
 class MaterialImageController extends Controller
 {
-    public function __construct(){
-        $this->middleware('datatable_adapters')->only(['index']);
-        $this->middleware('auth.rest')->only(['store','update','destroy']);
-    }
     public function index(){
 
-        return response()->json(Response::success((new GetAllMaterialImagesVM())->toArray()));
+        return response()->json(success((new GetAllMaterialImagesVM())->toArray()));
     }
 
     public function show(MaterialImage $materialImage){
 
-        return response()->json(Response::success((new GetMaterialImageVM($materialImage))->toArray()));
+        return response()->json(success((new GetMaterialImageVM($materialImage))->toArray()));
     }
 
     public function store(StoreMaterialImageRequest $request){
@@ -40,7 +34,7 @@ class MaterialImageController extends Controller
 
         $materialImage = StoreMaterialImageAction::execute($materialImageDTO);
 
-        return response()->json(Response::success((new GetMaterialImageVM($materialImage))->toArray()));
+        return response()->json(success((new GetMaterialImageVM($materialImage))->toArray()));
     }
 
     public function update(MaterialImage $materialImage, UpdateMaterialImageRequest $request){
@@ -51,12 +45,12 @@ class MaterialImageController extends Controller
 
         $materialImage = UpdateMaterialImageAction::execute($materialImage, $materialImageDTO);
 
-        return response()->json(Response::success((new GetMaterialImageVM($materialImage))->toArray()));
+        return response()->json(success((new GetMaterialImageVM($materialImage))->toArray()));
     }
 
     public function destroy(MaterialImage $materialImage){
 
-        return response()->json(Response::success(DestroyMaterialImageAction::execute($materialImage)));
+        return response()->json(success(DestroyMaterialImageAction::execute($materialImage)));
     }
 
 }

@@ -17,10 +17,6 @@ use App\Http\ViewModels\Pages\GetAllPagesVM;
 
 class PageController extends Controller
 {
-    public function __construct(){
-        $this->middleware('datatable_adapters')->only(['index']);
-//        $this->middleware('auth.rest')->only(['store','update','destroy']);
-    }
     public function index(){
 
         return response()->json(success((new GetAllPagesVM())->toArray()));

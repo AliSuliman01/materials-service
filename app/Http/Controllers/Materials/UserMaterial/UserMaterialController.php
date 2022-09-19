@@ -4,7 +4,7 @@
 namespace App\Http\Controllers\Materials\UserMaterial;
 
 
-use App\Helpers\Response;
+
 use App\Http\Controllers\Controller;
 use App\Domain\Materials\UserMaterial\Model\UserMaterial;
 use App\Domain\Materials\UserMaterial\Actions\StoreUserMaterialAction;
@@ -25,12 +25,12 @@ class UserMaterialController extends Controller
     }
     public function index(){
 
-        return response()->json(Response::success((new GetAllUserMaterialsVM())->toArray()));
+        return response()->json(success((new GetAllUserMaterialsVM())->toArray()));
     }
 
     public function show(UserMaterial $userMaterial){
 
-        return response()->json(Response::success((new GetUserMaterialVM($userMaterial))->toArray()));
+        return response()->json(success((new GetUserMaterialVM($userMaterial))->toArray()));
     }
 
     public function store(StoreUserMaterialRequest $request){
@@ -41,7 +41,7 @@ class UserMaterialController extends Controller
 
         $userMaterial = StoreUserMaterialAction::execute($userMaterialDTO);
 
-        return response()->json(Response::success((new GetUserMaterialVM($userMaterial))->toArray()));
+        return response()->json(success((new GetUserMaterialVM($userMaterial))->toArray()));
     }
 
     public function update(UserMaterial $userMaterial, UpdateUserMaterialRequest $request){
@@ -52,12 +52,12 @@ class UserMaterialController extends Controller
 
         $userMaterial = UpdateUserMaterialAction::execute($userMaterial, $userMaterialDTO);
 
-        return response()->json(Response::success((new GetUserMaterialVM($userMaterial))->toArray()));
+        return response()->json(success((new GetUserMaterialVM($userMaterial))->toArray()));
     }
 
     public function destroy(UserMaterial $userMaterial){
 
-        return response()->json(Response::success(DestroyUserMaterialAction::execute($userMaterial)));
+        return response()->json(success(DestroyUserMaterialAction::execute($userMaterial)));
     }
 
 }

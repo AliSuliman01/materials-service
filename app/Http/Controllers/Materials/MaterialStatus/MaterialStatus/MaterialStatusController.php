@@ -4,7 +4,7 @@
 namespace App\Http\Controllers\Materials\MaterialStatus\MaterialStatus;
 
 
-use App\Helpers\Response;
+
 use App\Http\Controllers\Controller;
 use App\Domain\Materials\MaterialStatus\MaterialStatus\Model\MaterialStatus;
 use App\Domain\Materials\MaterialStatus\MaterialStatus\Actions\StoreMaterialStatusAction;
@@ -18,18 +18,14 @@ use App\Http\ViewModels\Materials\MaterialStatus\MaterialStatus\GetAllMaterialSt
 
 class MaterialStatusController extends Controller
 {
-    public function __construct(){
-        $this->middleware('datatable_adapters')->only(['index']);
-        $this->middleware('auth.rest')->only(['store','update','destroy']);
-    }
     public function index(){
 
-        return response()->json(Response::success((new GetAllMaterialStatussVM())->toArray()));
+        return response()->json(success((new GetAllMaterialStatussVM())->toArray()));
     }
 
     public function show(MaterialStatus $materialStatus){
 
-        return response()->json(Response::success((new GetMaterialStatusVM($materialStatus))->toArray()));
+        return response()->json(success((new GetMaterialStatusVM($materialStatus))->toArray()));
     }
 
     public function store(StoreMaterialStatusRequest $request){
@@ -40,7 +36,7 @@ class MaterialStatusController extends Controller
 
         $materialStatus = StoreMaterialStatusAction::execute($materialStatusDTO);
 
-        return response()->json(Response::success((new GetMaterialStatusVM($materialStatus))->toArray()));
+        return response()->json(success((new GetMaterialStatusVM($materialStatus))->toArray()));
     }
 
     public function update(MaterialStatus $materialStatus, UpdateMaterialStatusRequest $request){
@@ -51,12 +47,12 @@ class MaterialStatusController extends Controller
 
         $materialStatus = UpdateMaterialStatusAction::execute($materialStatus, $materialStatusDTO);
 
-        return response()->json(Response::success((new GetMaterialStatusVM($materialStatus))->toArray()));
+        return response()->json(success((new GetMaterialStatusVM($materialStatus))->toArray()));
     }
 
     public function destroy(MaterialStatus $materialStatus){
 
-        return response()->json(Response::success(DestroyMaterialStatusAction::execute($materialStatus)));
+        return response()->json(success(DestroyMaterialStatusAction::execute($materialStatus)));
     }
 
 }

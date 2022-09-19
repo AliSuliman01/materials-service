@@ -4,7 +4,7 @@
 namespace App\Http\Controllers\Categories\CategoryTranslation;
 
 
-use App\Helpers\Response;
+
 use App\Http\Controllers\Controller;
 use App\Domain\Categories\CategoryTranslation\Actions\CategoryTranslationStoreAction;
 use App\Domain\Categories\CategoryTranslation\Actions\CategoryTranslationDestroyAction;
@@ -22,12 +22,12 @@ class CategoryTranslationController extends Controller
 
     public function index(){
 
-        return response()->json(Response::success((new CategoryTranslationIndexVM())->toArray()));
+        return response()->json(success((new CategoryTranslationIndexVM())->toArray()));
     }
 
     public function show(CategoryTranslationShowRequest $request){
 
-        return response()->json(Response::success((new CategoryTranslationShowVM(['id' => $request->route('id')]))->toArray()));
+        return response()->json(success((new CategoryTranslationShowVM(['id' => $request->route('id')]))->toArray()));
     }
 
     public function store(CategoryTranslationStoreRequest $request){
@@ -37,7 +37,7 @@ class CategoryTranslationController extends Controller
 
         $categoryTranslation = CategoryTranslationStoreAction::execute($categoryTranslationDTO);
 
-        return response()->json(Response::success((new CategoryTranslationShowVM($categoryTranslation->toArray()))->toArray()));
+        return response()->json(success((new CategoryTranslationShowVM($categoryTranslation->toArray()))->toArray()));
     }
 
     public function update(CategoryTranslationUpdateRequest $request){
@@ -47,12 +47,12 @@ class CategoryTranslationController extends Controller
 
         $categoryTranslation = CategoryTranslationUpdateAction::execute($categoryTranslationDTO);
 
-        return response()->json(Response::success((new CategoryTranslationShowVM($categoryTranslation->toArray()))->toArray()));
+        return response()->json(success((new CategoryTranslationShowVM($categoryTranslation->toArray()))->toArray()));
     }
 
     public function destroy(CategoryTranslationDestroyRequest $request){
 
-        return response()->json(Response::success(CategoryTranslationDestroyAction::execute(CategoryTranslationDTO::fromRequest($request->validated()))));
+        return response()->json(success(CategoryTranslationDestroyAction::execute(CategoryTranslationDTO::fromRequest($request->validated()))));
     }
 
 }

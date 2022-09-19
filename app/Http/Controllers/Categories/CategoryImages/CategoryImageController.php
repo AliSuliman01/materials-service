@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Categories\CategoryImages;
 
 
 use App\Domain\Categories\CategoryImages\Model\CategoryImage;
-use App\Helpers\Response;
+
 use App\Http\Controllers\Controller;
 use App\Domain\Categories\CategoryImages\Actions\CategoryImageStoreAction;
 use App\Domain\Categories\CategoryImages\Actions\CategoryImageDestroyAction;
@@ -23,12 +23,12 @@ class CategoryImageController extends Controller
 
     public function index(){
 
-        return response()->json(Response::success((new CategoryImageIndexVM())->toArray()));
+        return response()->json(success((new CategoryImageIndexVM())->toArray()));
     }
 
     public function show(CategoryImage $categoryImage){
 
-        return response()->json(Response::success((new CategoryImageShowVM($categoryImage))->toArray()));
+        return response()->json(success((new CategoryImageShowVM($categoryImage))->toArray()));
     }
 
     public function store(CategoryImageStoreRequest $request){
@@ -38,7 +38,7 @@ class CategoryImageController extends Controller
 
         $categoryImage = CategoryImageStoreAction::execute($categoryImageDTO);
 
-        return response()->json(Response::success((new CategoryImageShowVM($categoryImage))->toArray()));
+        return response()->json(success((new CategoryImageShowVM($categoryImage))->toArray()));
     }
 
     public function update(CategoryImage $categoryImage, CategoryImageUpdateRequest $request){
@@ -48,12 +48,12 @@ class CategoryImageController extends Controller
 
         $categoryImage = CategoryImageUpdateAction::execute($categoryImage, $categoryImageDTO);
 
-        return response()->json(Response::success((new CategoryImageShowVM($categoryImage))->toArray()));
+        return response()->json(success((new CategoryImageShowVM($categoryImage))->toArray()));
     }
 
     public function destroy(CategoryImage $categoryImage){
 
-        return response()->json(Response::success(CategoryImageDestroyAction::execute($categoryImage)));
+        return response()->json(success(CategoryImageDestroyAction::execute($categoryImage)));
     }
 
 }

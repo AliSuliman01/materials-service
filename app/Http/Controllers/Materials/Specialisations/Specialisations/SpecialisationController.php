@@ -9,7 +9,7 @@ use App\Domain\Materials\Materials\Actions\StoreMaterialAction;
 use App\Domain\Materials\Materials\Actions\UpdateMaterialAction;
 use App\Domain\Materials\Materials\DTO\MaterialDTO;
 use App\Domain\Materials\Materials\Model\Material;
-use App\Helpers\Response;
+
 use App\Http\Controllers\Controller;
 use App\Domain\Materials\Specialisations\Specialisations\Model\Specialisation;
 use App\Domain\Materials\Specialisations\Specialisations\Actions\StoreSpecialisationAction;
@@ -33,13 +33,13 @@ class SpecialisationController extends Controller
     public function index()
     {
 
-        return response()->json(Response::success((new GetAllSpecialisationsVM())->toArray()));
+        return response()->json(success((new GetAllSpecialisationsVM())->toArray()));
     }
 
     public function show(Specialisation $specialisation)
     {
 
-        return response()->json(Response::success((new GetSpecialisationVM($specialisation))->toArray()));
+        return response()->json(success((new GetSpecialisationVM($specialisation))->toArray()));
     }
 
     public function store(StoreSpecialisationRequest $request)
@@ -58,7 +58,7 @@ class SpecialisationController extends Controller
             return $specialisation;
         });
 
-            return response()->json(Response::success((new GetSpecialisationVM($specialisation))->toArray()));
+            return response()->json(success((new GetSpecialisationVM($specialisation))->toArray()));
         }
 
     public function update(Specialisation $specialisation, UpdateSpecialisationRequest $request)
@@ -79,7 +79,7 @@ class SpecialisationController extends Controller
                 $specialisation->courses()->sync($data['courses'] ?? []);
             return $specialisation;
         });
-        return response()->json(Response::success((new GetSpecialisationVM($specialisation))->toArray()));
+        return response()->json(success((new GetSpecialisationVM($specialisation))->toArray()));
     }
 
     public function destroy(Specialisation $specialisation)
@@ -89,7 +89,7 @@ class SpecialisationController extends Controller
             DestroyMaterialAction::execute($specialisation->material);
             DestroySpecialisationAction::execute($specialisation);
         });
-        return response()->json(Response::success());
+        return response()->json(success());
     }
 
 }

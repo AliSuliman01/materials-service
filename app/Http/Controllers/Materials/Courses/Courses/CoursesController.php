@@ -3,8 +3,6 @@
 
 namespace App\Http\Controllers\Materials\Courses\Courses;
 
-
-use App\Helpers\Response;
 use App\Http\Controllers\Controller;
 use App\Domain\Materials\Courses\Courses\Model\Course;
 use App\Domain\Materials\Courses\Courses\Actions\StoreCoursesAction;
@@ -18,18 +16,14 @@ use App\Http\ViewModels\Materials\Courses\Courses\GetAllCoursessVM;
 
 class CoursesController extends Controller
 {
-    public function __construct(){
-        $this->middleware('datatable_adapters')->only(['index']);
-        $this->middleware('auth.rest')->only(['store','update','destroy']);
-    }
     public function index(){
 
-        return response()->json(Response::success((new GetAllCoursessVM())->toArray()));
+        return response()->json(success((new GetAllCoursessVM())->toArray()));
     }
 
     public function show(Course $course){
 
-        return response()->json(Response::success((new GetCoursesVM($course))->toArray()));
+        return response()->json(success((new GetCoursesVM($course))->toArray()));
     }
 
     public function store(StoreCoursesRequest $request){
@@ -40,7 +34,7 @@ class CoursesController extends Controller
 
         $course = StoreCoursesAction::execute($courseDTO);
 
-        return response()->json(Response::success((new GetCoursesVM($course))->toArray()));
+        return response()->json(success((new GetCoursesVM($course))->toArray()));
     }
 
     public function update(Course $course, UpdateCoursesRequest $request){
@@ -51,12 +45,12 @@ class CoursesController extends Controller
 
         $course = UpdateCoursesAction::execute($course, $courseDTO);
 
-        return response()->json(Response::success((new GetCoursesVM($course))->toArray()));
+        return response()->json(success((new GetCoursesVM($course))->toArray()));
     }
 
     public function destroy(Course $course){
 
-        return response()->json(Response::success(DestroyCoursesAction::execute($course)));
+        return response()->json(success(DestroyCoursesAction::execute($course)));
     }
 
 }
