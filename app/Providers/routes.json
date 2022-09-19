@@ -1,0 +1,19 @@
+[
+    "routes/api.php",
+    "routes/Pages/pages.php",
+    "routes/Tips/Tips/tips.php",
+    "routes/Categories/Categories/categories.php",
+    "routes/Levels/Levels/levels.php",
+    "routes/Materials/Materials/materials.php",
+    "routes/Materials/MaterialCategory/material_category.php",
+    "routes/Materials/MaterialTranslation/material_translation.php",
+    "routes/Materials/MaterialImages/material_images.php",
+    "routes/Materials/MaterialImages/MaterialImageCategory/material_image_category.php",
+    "routes/Materials/MaterialStatus/MaterialStatus/material_statuses.php",
+    "routes/Materials/MaterialStatus/MaterialStatusTranslation/material_status_translation.php",
+    "routes/Materials/UserMaterial/user_material.php",
+    "routes/Materials/Specialisations/Specialisations/specialisations.php",
+    "routes/Materials/Courses/Courses/courses.php",
+    "routes/Materials/Projects/Projects/projects.php",
+    "routes/Materials/Specialisations/SpecialisationCourse/specialisation_course.php"
+]
