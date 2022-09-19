@@ -12,7 +12,7 @@ class CategoryIndexVM implements Arrayable
 
     public function get_categories(){
 
-    	return DataTables::eloquent(Category::with(['translations','images','categories','materials']))->toJson();
+    	return DataTables::eloquent(Category::with(['parent', 'translations','images','categories','materials']))->toJson();
 	}
     public function toArray()
     {

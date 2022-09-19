@@ -46,6 +46,10 @@ class Category extends SmartModel
         return $this->hasMany(CategoryImage::class,'category_id');
     }
 
+    public function parent()
+    {
+        return $this->belongsTo(Category::class, 'parent_category_id');
+    }
     public function categories()
     {
         return $this->hasMany(Category::class,'parent_category_id');
