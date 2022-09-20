@@ -11,7 +11,7 @@ class LevelTranslation extends SmartModel
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'level_translations';
+    protected $table = 'level_translation';
 
     protected $guarded = [
         'id',
