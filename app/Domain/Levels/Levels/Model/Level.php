@@ -30,12 +30,12 @@ class Level extends SmartModel
 
     public function translations()
     {
-        return $this->hasMany(LevelTranslation::class);
+        return $this->hasMany(LevelTranslation::class, 'level_id');
     }
 
     public function translation()
     {
-        return $this->hasOne(LevelTranslation::class)
+        return $this->hasOne(LevelTranslation::class, 'level_id')
             ->where('language_code',App::getLocale());
     }
 }
