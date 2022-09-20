@@ -25,7 +25,7 @@ class MaterialController extends Controller
 
     public function index()
     {
-        return \response()->json(success(Material::with(['translation'])->get()));
+        return \response()->json(success(Material::with(['translation', 'level.translations'])->get()));
     }
     public function show(Material $material)
     {
