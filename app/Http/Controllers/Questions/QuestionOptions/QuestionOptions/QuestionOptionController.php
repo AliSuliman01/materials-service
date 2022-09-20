@@ -4,7 +4,7 @@
 namespace App\Http\Controllers\Questions\QuestionOptions\QuestionOptions;
 
 
-use App\Helpers\Response;
+
 use App\Http\Controllers\Controller;
 use App\Domain\Questions\QuestionOptions\QuestionOptions\Model\QuestionOption;
 use App\Domain\Questions\QuestionOptions\QuestionOptions\Actions\StoreQuestionOptionAction;
@@ -21,12 +21,12 @@ class QuestionOptionController extends Controller
 
     public function index(){
 
-        return response()->json(Response::success((new GetAllQuestionOptionsVM())->toArray()));
+        return response()->json(success((new GetAllQuestionOptionsVM())->toArray()));
     }
 
     public function show(QuestionOption $questionOption){
 
-        return response()->json(Response::success((new GetQuestionOptionVM($questionOption))->toArray()));
+        return response()->json(success((new GetQuestionOptionVM($questionOption))->toArray()));
     }
 
     public function store(StoreQuestionOptionRequest $request){
@@ -37,7 +37,7 @@ class QuestionOptionController extends Controller
 
         $questionOption = StoreQuestionOptionAction::execute($questionOptionDTO);
 
-        return response()->json(Response::success((new GetQuestionOptionVM($questionOption))->toArray()));
+        return response()->json(success((new GetQuestionOptionVM($questionOption))->toArray()));
     }
 
     public function update(QuestionOption $questionOption, UpdateQuestionOptionRequest $request){
@@ -48,12 +48,12 @@ class QuestionOptionController extends Controller
 
         $questionOption = UpdateQuestionOptionAction::execute($questionOption, $questionOptionDTO);
 
-        return response()->json(Response::success((new GetQuestionOptionVM($questionOption))->toArray()));
+        return response()->json(success((new GetQuestionOptionVM($questionOption))->toArray()));
     }
 
     public function destroy(QuestionOption $questionOption){
 
-        return response()->json(Response::success(DestroyQuestionOptionAction::execute($questionOption)));
+        return response()->json(success(DestroyQuestionOptionAction::execute($questionOption)));
     }
 
 }

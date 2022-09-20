@@ -4,7 +4,6 @@
 namespace App\Http\Controllers\Competitions\CompetitionMember;
 
 
-use App\Helpers\Response;
 use App\Http\Controllers\Controller;
 use App\Domain\Competitions\CompetitionMember\Model\CompetitionMember;
 use App\Domain\Competitions\CompetitionMember\Actions\StoreCompetitionMemberAction;
@@ -21,12 +20,12 @@ class CompetitionMemberController extends Controller
 
     public function index(){
 
-        return response()->json(Response::success((new GetAllCompetitionMembersVM())->toArray()));
+        return response()->json(success((new GetAllCompetitionMembersVM())->toArray()));
     }
 
     public function show(CompetitionMember $competitionMember){
 
-        return response()->json(Response::success((new GetCompetitionMemberVM($competitionMember))->toArray()));
+        return response()->json(success((new GetCompetitionMemberVM($competitionMember))->toArray()));
     }
 
     public function store(StoreCompetitionMemberRequest $request){
@@ -37,7 +36,7 @@ class CompetitionMemberController extends Controller
 
         $competitionMember = StoreCompetitionMemberAction::execute($competitionMemberDTO);
 
-        return response()->json(Response::success((new GetCompetitionMemberVM($competitionMember))->toArray()));
+        return response()->json(success((new GetCompetitionMemberVM($competitionMember))->toArray()));
     }
 
     public function update(CompetitionMember $competitionMember, UpdateCompetitionMemberRequest $request){
@@ -48,12 +47,12 @@ class CompetitionMemberController extends Controller
 
         $competitionMember = UpdateCompetitionMemberAction::execute($competitionMember, $competitionMemberDTO);
 
-        return response()->json(Response::success((new GetCompetitionMemberVM($competitionMember))->toArray()));
+        return response()->json(success((new GetCompetitionMemberVM($competitionMember))->toArray()));
     }
 
     public function destroy(CompetitionMember $competitionMember){
 
-        return response()->json(Response::success(DestroyCompetitionMemberAction::execute($competitionMember)));
+        return response()->json(success(DestroyCompetitionMemberAction::execute($competitionMember)));
     }
 
 }

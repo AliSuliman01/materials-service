@@ -4,7 +4,7 @@
 namespace App\Http\Controllers\Competitions\CompetitionTypes\CompetitionTypeTranslation;
 
 
-use App\Helpers\Response;
+
 use App\Http\Controllers\Controller;
 use App\Domain\Competitions\CompetitionTypes\CompetitionTypeTranslation\Model\CompetitionTypeTranslation;
 use App\Domain\Competitions\CompetitionTypes\CompetitionTypeTranslation\Actions\StoreCompetitionTypeTranslationAction;
@@ -21,12 +21,12 @@ class CompetitionTypeTranslationController extends Controller
 
     public function index(){
 
-        return response()->json(Response::success((new GetAllCompetitionTypeTranslationsVM())->toArray()));
+        return response()->json(success((new GetAllCompetitionTypeTranslationsVM())->toArray()));
     }
 
     public function show(CompetitionTypeTranslation $competitionTypeTranslation){
 
-        return response()->json(Response::success((new GetCompetitionTypeTranslationVM($competitionTypeTranslation))->toArray()));
+        return response()->json(success((new GetCompetitionTypeTranslationVM($competitionTypeTranslation))->toArray()));
     }
 
     public function store(StoreCompetitionTypeTranslationRequest $request){
@@ -37,7 +37,7 @@ class CompetitionTypeTranslationController extends Controller
 
         $competitionTypeTranslation = StoreCompetitionTypeTranslationAction::execute($competitionTypeTranslationDTO);
 
-        return response()->json(Response::success((new GetCompetitionTypeTranslationVM($competitionTypeTranslation))->toArray()));
+        return response()->json(success((new GetCompetitionTypeTranslationVM($competitionTypeTranslation))->toArray()));
     }
 
     public function update(CompetitionTypeTranslation $competitionTypeTranslation, UpdateCompetitionTypeTranslationRequest $request){
@@ -48,12 +48,12 @@ class CompetitionTypeTranslationController extends Controller
 
         $competitionTypeTranslation = UpdateCompetitionTypeTranslationAction::execute($competitionTypeTranslation, $competitionTypeTranslationDTO);
 
-        return response()->json(Response::success((new GetCompetitionTypeTranslationVM($competitionTypeTranslation))->toArray()));
+        return response()->json(success((new GetCompetitionTypeTranslationVM($competitionTypeTranslation))->toArray()));
     }
 
     public function destroy(CompetitionTypeTranslation $competitionTypeTranslation){
 
-        return response()->json(Response::success(DestroyCompetitionTypeTranslationAction::execute($competitionTypeTranslation)));
+        return response()->json(success(DestroyCompetitionTypeTranslationAction::execute($competitionTypeTranslation)));
     }
 
 }

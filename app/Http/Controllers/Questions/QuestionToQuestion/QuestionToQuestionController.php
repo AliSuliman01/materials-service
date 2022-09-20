@@ -4,7 +4,7 @@
 namespace App\Http\Controllers\Questions\QuestionToQuestion;
 
 
-use App\Helpers\Response;
+
 use App\Http\Controllers\Controller;
 use App\Domain\Questions\QuestionToQuestion\Model\QuestionToQuestion;
 use App\Domain\Questions\QuestionToQuestion\Actions\StoreQuestionToQuestionAction;
@@ -21,12 +21,12 @@ class QuestionToQuestionController extends Controller
 
     public function index(){
 
-        return response()->json(Response::success((new GetAllQuestionToQuestionsVM())->toArray()));
+        return response()->json(success((new GetAllQuestionToQuestionsVM())->toArray()));
     }
 
     public function show(QuestionToQuestion $questionToQuestion){
 
-        return response()->json(Response::success((new GetQuestionToQuestionVM($questionToQuestion))->toArray()));
+        return response()->json(success((new GetQuestionToQuestionVM($questionToQuestion))->toArray()));
     }
 
     public function store(StoreQuestionToQuestionRequest $request){
@@ -37,7 +37,7 @@ class QuestionToQuestionController extends Controller
 
         $questionToQuestion = StoreQuestionToQuestionAction::execute($questionToQuestionDTO);
 
-        return response()->json(Response::success((new GetQuestionToQuestionVM($questionToQuestion))->toArray()));
+        return response()->json(success((new GetQuestionToQuestionVM($questionToQuestion))->toArray()));
     }
 
     public function update(QuestionToQuestion $questionToQuestion, UpdateQuestionToQuestionRequest $request){
@@ -48,12 +48,12 @@ class QuestionToQuestionController extends Controller
 
         $questionToQuestion = UpdateQuestionToQuestionAction::execute($questionToQuestion, $questionToQuestionDTO);
 
-        return response()->json(Response::success((new GetQuestionToQuestionVM($questionToQuestion))->toArray()));
+        return response()->json(success((new GetQuestionToQuestionVM($questionToQuestion))->toArray()));
     }
 
     public function destroy(QuestionToQuestion $questionToQuestion){
 
-        return response()->json(Response::success(DestroyQuestionToQuestionAction::execute($questionToQuestion)));
+        return response()->json(success(DestroyQuestionToQuestionAction::execute($questionToQuestion)));
     }
 
 }

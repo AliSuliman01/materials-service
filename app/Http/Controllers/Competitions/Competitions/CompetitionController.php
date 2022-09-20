@@ -4,7 +4,7 @@
 namespace App\Http\Controllers\Competitions\Competitions;
 
 
-use App\Helpers\Response;
+
 use App\Http\Controllers\Controller;
 use App\Domain\Competitions\Competitions\Model\Competition;
 use App\Domain\Competitions\Competitions\Actions\StoreCompetitionAction;
@@ -21,12 +21,12 @@ class CompetitionController extends Controller
 
     public function index(){
 
-        return response()->json(Response::success((new GetAllCompetitionsVM())->toArray()));
+        return response()->json(success((new GetAllCompetitionsVM())->toArray()));
     }
 
     public function show(Competition $competition){
 
-        return response()->json(Response::success((new GetCompetitionVM($competition))->toArray()));
+        return response()->json(success((new GetCompetitionVM($competition))->toArray()));
     }
 
     public function store(StoreCompetitionRequest $request){
@@ -37,7 +37,7 @@ class CompetitionController extends Controller
 
         $competition = StoreCompetitionAction::execute($competitionDTO);
 
-        return response()->json(Response::success((new GetCompetitionVM($competition))->toArray()));
+        return response()->json(success((new GetCompetitionVM($competition))->toArray()));
     }
 
     public function update(Competition $competition, UpdateCompetitionRequest $request){
@@ -48,12 +48,12 @@ class CompetitionController extends Controller
 
         $competition = UpdateCompetitionAction::execute($competition, $competitionDTO);
 
-        return response()->json(Response::success((new GetCompetitionVM($competition))->toArray()));
+        return response()->json(success((new GetCompetitionVM($competition))->toArray()));
     }
 
     public function destroy(Competition $competition){
 
-        return response()->json(Response::success(DestroyCompetitionAction::execute($competition)));
+        return response()->json(success(DestroyCompetitionAction::execute($competition)));
     }
 
 }

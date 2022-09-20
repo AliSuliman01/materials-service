@@ -4,7 +4,7 @@
 namespace App\Http\Controllers\Questions\QuestionTranslation;
 
 
-use App\Helpers\Response;
+
 use App\Http\Controllers\Controller;
 use App\Domain\Questions\QuestionTranslation\Model\QuestionTranslation;
 use App\Domain\Questions\QuestionTranslation\Actions\StoreQuestionTranslationAction;
@@ -21,12 +21,12 @@ class QuestionTranslationController extends Controller
 
     public function index(){
 
-        return response()->json(Response::success((new GetAllQuestionTranslationsVM())->toArray()));
+        return response()->json(success((new GetAllQuestionTranslationsVM())->toArray()));
     }
 
     public function show(QuestionTranslation $questionTranslation){
 
-        return response()->json(Response::success((new GetQuestionTranslationVM($questionTranslation))->toArray()));
+        return response()->json(success((new GetQuestionTranslationVM($questionTranslation))->toArray()));
     }
 
     public function store(StoreQuestionTranslationRequest $request){
@@ -37,7 +37,7 @@ class QuestionTranslationController extends Controller
 
         $questionTranslation = StoreQuestionTranslationAction::execute($questionTranslationDTO);
 
-        return response()->json(Response::success((new GetQuestionTranslationVM($questionTranslation))->toArray()));
+        return response()->json(success((new GetQuestionTranslationVM($questionTranslation))->toArray()));
     }
 
     public function update(QuestionTranslation $questionTranslation, UpdateQuestionTranslationRequest $request){
@@ -48,12 +48,12 @@ class QuestionTranslationController extends Controller
 
         $questionTranslation = UpdateQuestionTranslationAction::execute($questionTranslation, $questionTranslationDTO);
 
-        return response()->json(Response::success((new GetQuestionTranslationVM($questionTranslation))->toArray()));
+        return response()->json(success((new GetQuestionTranslationVM($questionTranslation))->toArray()));
     }
 
     public function destroy(QuestionTranslation $questionTranslation){
 
-        return response()->json(Response::success(DestroyQuestionTranslationAction::execute($questionTranslation)));
+        return response()->json(success(DestroyQuestionTranslationAction::execute($questionTranslation)));
     }
 
 }

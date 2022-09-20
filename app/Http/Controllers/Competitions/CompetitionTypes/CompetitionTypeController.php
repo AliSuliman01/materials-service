@@ -4,7 +4,7 @@
 namespace App\Http\Controllers\Competitions\CompetitionTypes;
 
 
-use App\Helpers\Response;
+
 use App\Http\Controllers\Controller;
 use App\Domain\Competitions\CompetitionTypes\Model\CompetitionType;
 use App\Domain\Competitions\CompetitionTypes\Actions\StoreCompetitionTypeAction;
@@ -21,12 +21,12 @@ class CompetitionTypeController extends Controller
 
     public function index(){
 
-        return response()->json(Response::success((new GetAllCompetitionTypesVM())->toArray()));
+        return response()->json(success((new GetAllCompetitionTypesVM())->toArray()));
     }
 
     public function show(CompetitionType $competitionType){
 
-        return response()->json(Response::success((new GetCompetitionTypeVM($competitionType))->toArray()));
+        return response()->json(success((new GetCompetitionTypeVM($competitionType))->toArray()));
     }
 
     public function store(StoreCompetitionTypeRequest $request){
@@ -37,7 +37,7 @@ class CompetitionTypeController extends Controller
 
         $competitionType = StoreCompetitionTypeAction::execute($competitionTypeDTO);
 
-        return response()->json(Response::success((new GetCompetitionTypeVM($competitionType))->toArray()));
+        return response()->json(success((new GetCompetitionTypeVM($competitionType))->toArray()));
     }
 
     public function update(CompetitionType $competitionType, UpdateCompetitionTypeRequest $request){
@@ -48,12 +48,12 @@ class CompetitionTypeController extends Controller
 
         $competitionType = UpdateCompetitionTypeAction::execute($competitionType, $competitionTypeDTO);
 
-        return response()->json(Response::success((new GetCompetitionTypeVM($competitionType))->toArray()));
+        return response()->json(success((new GetCompetitionTypeVM($competitionType))->toArray()));
     }
 
     public function destroy(CompetitionType $competitionType){
 
-        return response()->json(Response::success(DestroyCompetitionTypeAction::execute($competitionType)));
+        return response()->json(success(DestroyCompetitionTypeAction::execute($competitionType)));
     }
 
 }

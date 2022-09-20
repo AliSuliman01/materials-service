@@ -4,7 +4,7 @@
 namespace App\Http\Controllers\Questions\Questions;
 
 
-use App\Helpers\Response;
+
 use App\Http\Controllers\Controller;
 use App\Domain\Questions\Questions\Model\Question;
 use App\Domain\Questions\Questions\Actions\StoreQuestionAction;
@@ -21,12 +21,12 @@ class QuestionController extends Controller
 
     public function index(){
 
-        return response()->json(Response::success((new GetAllQuestionsVM())->toArray()));
+        return response()->json(success((new GetAllQuestionsVM())->toArray()));
     }
 
     public function show(Question $question){
 
-        return response()->json(Response::success((new GetQuestionVM($question))->toArray()));
+        return response()->json(success((new GetQuestionVM($question))->toArray()));
     }
 
     public function store(StoreQuestionRequest $request){
@@ -37,7 +37,7 @@ class QuestionController extends Controller
 
         $question = StoreQuestionAction::execute($questionDTO);
 
-        return response()->json(Response::success((new GetQuestionVM($question))->toArray()));
+        return response()->json(success((new GetQuestionVM($question))->toArray()));
     }
 
     public function update(Question $question, UpdateQuestionRequest $request){
@@ -48,12 +48,12 @@ class QuestionController extends Controller
 
         $question = UpdateQuestionAction::execute($question, $questionDTO);
 
-        return response()->json(Response::success((new GetQuestionVM($question))->toArray()));
+        return response()->json(success((new GetQuestionVM($question))->toArray()));
     }
 
     public function destroy(Question $question){
 
-        return response()->json(Response::success(DestroyQuestionAction::execute($question)));
+        return response()->json(success(DestroyQuestionAction::execute($question)));
     }
 
 }

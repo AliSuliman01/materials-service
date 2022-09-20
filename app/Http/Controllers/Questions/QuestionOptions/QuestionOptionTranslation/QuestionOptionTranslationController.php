@@ -4,7 +4,7 @@
 namespace App\Http\Controllers\Questions\QuestionOptions\QuestionOptionTranslation;
 
 
-use App\Helpers\Response;
+
 use App\Http\Controllers\Controller;
 use App\Domain\Questions\QuestionOptions\QuestionOptionTranslation\Model\QuestionOptionTranslation;
 use App\Domain\Questions\QuestionOptions\QuestionOptionTranslation\Actions\StoreQuestionOptionTranslationAction;
@@ -21,12 +21,12 @@ class QuestionOptionTranslationController extends Controller
 
     public function index(){
 
-        return response()->json(Response::success((new GetAllQuestionOptionTranslationsVM())->toArray()));
+        return response()->json(success((new GetAllQuestionOptionTranslationsVM())->toArray()));
     }
 
     public function show(QuestionOptionTranslation $questionOptionTranslation){
 
-        return response()->json(Response::success((new GetQuestionOptionTranslationVM($questionOptionTranslation))->toArray()));
+        return response()->json(success((new GetQuestionOptionTranslationVM($questionOptionTranslation))->toArray()));
     }
 
     public function store(StoreQuestionOptionTranslationRequest $request){
@@ -37,7 +37,7 @@ class QuestionOptionTranslationController extends Controller
 
         $questionOptionTranslation = StoreQuestionOptionTranslationAction::execute($questionOptionTranslationDTO);
 
-        return response()->json(Response::success((new GetQuestionOptionTranslationVM($questionOptionTranslation))->toArray()));
+        return response()->json(success((new GetQuestionOptionTranslationVM($questionOptionTranslation))->toArray()));
     }
 
     public function update(QuestionOptionTranslation $questionOptionTranslation, UpdateQuestionOptionTranslationRequest $request){
@@ -48,12 +48,12 @@ class QuestionOptionTranslationController extends Controller
 
         $questionOptionTranslation = UpdateQuestionOptionTranslationAction::execute($questionOptionTranslation, $questionOptionTranslationDTO);
 
-        return response()->json(Response::success((new GetQuestionOptionTranslationVM($questionOptionTranslation))->toArray()));
+        return response()->json(success((new GetQuestionOptionTranslationVM($questionOptionTranslation))->toArray()));
     }
 
     public function destroy(QuestionOptionTranslation $questionOptionTranslation){
 
-        return response()->json(Response::success(DestroyQuestionOptionTranslationAction::execute($questionOptionTranslation)));
+        return response()->json(success(DestroyQuestionOptionTranslationAction::execute($questionOptionTranslation)));
     }
 
 }

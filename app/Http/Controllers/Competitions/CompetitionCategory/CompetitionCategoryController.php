@@ -4,7 +4,7 @@
 namespace App\Http\Controllers\Competitions\CompetitionCategory;
 
 
-use App\Helpers\Response;
+
 use App\Http\Controllers\Controller;
 use App\Domain\Competitions\CompetitionCategory\Model\CompetitionCategory;
 use App\Domain\Competitions\CompetitionCategory\Actions\StoreCompetitionCategoryAction;
@@ -21,12 +21,12 @@ class CompetitionCategoryController extends Controller
 
     public function index(){
 
-        return response()->json(Response::success((new GetAllCompetitionCategorysVM())->toArray()));
+        return response()->json(success((new GetAllCompetitionCategorysVM())->toArray()));
     }
 
     public function show(CompetitionCategory $competitionCategory){
 
-        return response()->json(Response::success((new GetCompetitionCategoryVM($competitionCategory))->toArray()));
+        return response()->json(success((new GetCompetitionCategoryVM($competitionCategory))->toArray()));
     }
 
     public function store(StoreCompetitionCategoryRequest $request){
@@ -37,7 +37,7 @@ class CompetitionCategoryController extends Controller
 
         $competitionCategory = StoreCompetitionCategoryAction::execute($competitionCategoryDTO);
 
-        return response()->json(Response::success((new GetCompetitionCategoryVM($competitionCategory))->toArray()));
+        return response()->json(success((new GetCompetitionCategoryVM($competitionCategory))->toArray()));
     }
 
     public function update(CompetitionCategory $competitionCategory, UpdateCompetitionCategoryRequest $request){
@@ -48,12 +48,12 @@ class CompetitionCategoryController extends Controller
 
         $competitionCategory = UpdateCompetitionCategoryAction::execute($competitionCategory, $competitionCategoryDTO);
 
-        return response()->json(Response::success((new GetCompetitionCategoryVM($competitionCategory))->toArray()));
+        return response()->json(success((new GetCompetitionCategoryVM($competitionCategory))->toArray()));
     }
 
     public function destroy(CompetitionCategory $competitionCategory){
 
-        return response()->json(Response::success(DestroyCompetitionCategoryAction::execute($competitionCategory)));
+        return response()->json(success(DestroyCompetitionCategoryAction::execute($competitionCategory)));
     }
 
 }
