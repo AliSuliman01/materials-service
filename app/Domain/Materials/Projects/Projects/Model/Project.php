@@ -11,6 +11,8 @@ class Project extends SmartModel
 {
     use HasFactory, SoftDeletes;
 
+    protected $primaryKey = 'material_id';
+
     protected $guarded = [
         'created_at',
         'updated_at',
