@@ -3,6 +3,8 @@
 
 namespace App\Http\Controllers\Materials\Courses\Courses;
 
+use App\Domain\Categories\Categories\Model\Category;
+use App\Domain\Levels\Levels\Model\Level;
 use App\Domain\Materials\Materials\Actions\StoreMaterialAction;
 use App\Domain\Materials\Materials\Actions\UpdateMaterialAction;
 use App\Domain\Materials\Materials\DTO\MaterialDTO;
@@ -12,6 +14,7 @@ use App\Domain\Materials\Courses\Courses\Actions\StoreCoursesAction;
 use App\Domain\Materials\Courses\Courses\Actions\DestroyCoursesAction;
 use App\Domain\Materials\Courses\Courses\Actions\UpdateCoursesAction;
 use App\Domain\Materials\Courses\Courses\DTO\CoursesDTO;
+use App\Http\Requests\Materials\Courses\Courses\CourseSearchRequest;
 use App\Http\Requests\Materials\Courses\Courses\StoreCoursesRequest;
 use App\Http\Requests\Materials\Courses\Courses\UpdateCoursesRequest;
 use App\Http\ViewModels\Materials\Courses\Courses\GetCoursesVM;
@@ -24,6 +27,38 @@ class CoursesController extends Controller
 
         return response()->json(success((new GetAllCoursessVM())->toArray()));
     }
+
+    public function dataForSearch()
+    {
+        return response()->json(
+            [
+                'levels' => Level::with('translation')->get(),
+                'categories' => Category::query()->whereRelation('parent','id','=',10)->get()
+            ]
+        );
+    }
+    public function search(CourseSearchRequest $request)
+    {
+        $data = $request->validated();
+
+        $courses = Course::query();
+
+        if (isset($data['level_id']))
+            $courses->where('level_id','=',$data['level_id']);
+
+        if (isset($data['name']))
+            $courses->whereHas('material',function($query) use($data) {
+                $query->whereRelation('translations','name','like',"%{$data['name']}%");
+            });
+
+        if (isset($data['categories']))
+            $courses->whereHas('material',function($materialQuery) use($data) {
+                $materialQuery->whereHas('categories',function($categoryQuery) use($data) {
+                    $categoryQuery->whereIn('id',$data['categories']);
+                });
+            });
+        return response()->json(success($courses->get()));
+}
 
     public function show(Course $course){
 
