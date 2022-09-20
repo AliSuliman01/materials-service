@@ -13,6 +13,7 @@ class StoreCoursesRequest extends FormRequest
         return [
             'duration'				=> 'integer|required' ,
             'level_id'				=> 'integer|required' ,
+            'is_featured'				=> 'integer|nullable' ,
             'translations' => 'required|array',
             'translations.*.language_code' => 'required',
             'translations.*.name' => 'required|string',
