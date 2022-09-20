@@ -52,7 +52,7 @@ class CoursesController extends Controller
 
         if (isset($data['categories']))
             $courses->whereHas('categories',function($categoryQuery) use($data) {
-                    $categoryQuery->whereIn('id',$data['categories']);
+                    $categoryQuery->whereIn('categories.id',$data['categories']);
                 });
 
         return response()->json(success($courses->get()));
