@@ -1,5 +1,6 @@
 [
     "routes/api.php",
+    "routes/Server/server.php",
     "routes/Pages/pages.php",
     "routes/Tips/Tips/tips.php",
     "routes/Categories/Categories/categories.php",

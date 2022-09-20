@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class LevelTranslation extends SmartModel
 {
-    use HasFactory, SoftDeletes, AsPivot;
+    use HasFactory, SoftDeletes;
+
+    protected $table = 'level_translations';
 
     protected $guarded = [
         'id',
