@@ -3,6 +3,7 @@
 namespace App\Domain\Materials\Materials\Model;
 
 use App\Domain\Categories\Categories\Model\Category;
+use App\Domain\Levels\Levels\Model\Level;
 use App\Domain\Materials\Courses\Courses\Model\Course;
 use App\Domain\Materials\MaterialCategory\Model\MaterialCategory;
 use App\Domain\Materials\MaterialImages\Model\MaterialImage;
@@ -76,5 +77,10 @@ class Material extends SmartModel
     public function project()
     {
         return $this->hasOne(Project::class, 'material_id', 'id');
+    }
+
+    public function level()
+    {
+        return $this->belongsTo(Level::class, 'level_id');
     }
 }
