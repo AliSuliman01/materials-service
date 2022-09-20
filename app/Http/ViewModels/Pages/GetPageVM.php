@@ -14,7 +14,7 @@ class GetPageVM implements Arrayable
 
     public function __construct(Page $page)
     {
-        $this->page = $page->load('categories.categories.materials');
+        $this->page = $page->load('categories.categories');
     }
 
     public function toArray()
