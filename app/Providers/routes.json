@@ -16,5 +16,17 @@
     "routes/Materials/Specialisations/Specialisations/specialisations.php",
     "routes/Materials/Courses/Courses/courses.php",
     "routes/Materials/Projects/Projects/projects.php",
-    "routes/Materials/Specialisations/SpecialisationCourse/specialisation_course.php"
+    "routes/Materials/Specialisations/SpecialisationCourse/specialisation_course.php",
+    "routes/Competitions/Competitions/competitions.php",
+    "routes/Competitions/CompetitionMember/competition_member.php",
+    "routes/Competitions/CompetitionTypes/CompetitionTypes/competition_types.php",
+    "routes/Competitions/CompetitionCategory/competition_category.php",
+    "routes/Competitions/CompetitionTypes/CompetitionTypeTranslation/competition_type_translation.php",
+    "routes/Questions/Questions/questions.php",
+    "routes/Questions/QuestionTranslation/question_translation.php",
+    "routes/Questions/QuestionOptions/QuestionOptions/question_options.php",
+    "routes/Questions/QuestionOptions/QuestionOptionTranslation/question_option_translation.php",
+    "routes/Questions/QuestionToQuestion/question_to_question.php",
+    "routes/Questions/QuestionCategory/question_category.php"
+
 ]
