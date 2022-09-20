@@ -18,11 +18,6 @@ use App\Http\ViewModels\Materials\UserMaterial\GetAllUserMaterialsVM;
 
 class UserMaterialController extends Controller
 {
-    public function __construct(){
-        $this->middleware('datatable_adapters')->only(['index']);
-        $this->middleware('auth:api')->only(['store','update','destroy']);
-        $this->middleware('addUserId')->only('store');
-    }
     public function index(){
 
         return response()->json(success((new GetAllUserMaterialsVM())->toArray()));

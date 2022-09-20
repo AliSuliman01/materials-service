@@ -18,10 +18,7 @@ use App\Http\ViewModels\Competitions\CompetitionTypes\GetAllCompetitionTypesVM;
 
 class CompetitionTypeController extends Controller
 {
-    public function __construct(){
-        $this->middleware('datatable_adapters')->only(['index']);
-        $this->middleware('auth.rest')->only(['store','update','destroy']);
-    }
+
     public function index(){
 
         return response()->json(Response::success((new GetAllCompetitionTypesVM())->toArray()));
