@@ -35,9 +35,9 @@ class Material extends SmartModel
     ];
 
     protected $with = [
-        'specialization',
-        'course',
-        'project',
+//        'specialization',
+//        'course',
+//        'project',
         'translation'
     ];
 
