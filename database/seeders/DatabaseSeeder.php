@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Domain\Levels\Levels\Model\Level;
+use App\Domain\Pages\Model\Page;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +15,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $defaultData = json_decode(file_get_contents(__DIR__.'/defaultData.json'), true);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        Page::query()->upsert($defaultData['pages'],['id']);
+
+        foreach ($defaultData['levels'] as $levelObject){
+            $level = Level::query()->updateOrCreate(collect($levelObject)->except(['translations'])->toArray());
+
+            $translationsData = collect($level['translations'])->map(function($item)use($level){
+                $item['level_id'] = $level->id;
+                return $item;
+            });
+
+            $level->translations()->upsert($translationsData->toArray(),['id']);
+        }
+
     }
 }

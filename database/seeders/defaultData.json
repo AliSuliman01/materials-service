@@ -1,0 +1,43 @@
+{
+    "levels": [
+        {
+            "id": 1,
+            "sequence": 1,
+            "translations": [
+                {
+                    "id": 1,
+                    "language_code":"en",
+                    "name": "beginner"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "sequence": 2,
+            "translations": [
+                {
+                    "id": 2,
+                    "language_code":"en",
+                    "name": "intermediate"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "sequence": 3,
+            "translations": [
+                {
+                    "id": 3,
+                    "language_code":"en",
+                    "name": "advanced"
+                }
+            ]
+        }
+    ],
+    "pages": [
+        {
+            "id": 1,
+            "name": "home_page"
+        }
+    ]
+}
