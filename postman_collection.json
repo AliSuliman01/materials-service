@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "9cde045d-740a-49fb-9cab-a60b7c26b30b",
+		"name": "new tables",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15657167"
+	},
+	"item": [{
+    "name": "lessons",
+    "item": [
+        {
+            "name": "index",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "language_code",
+                        "value": "en",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "{{staging_base_v3}}/{{users}}/api/v1/lessons",
+                    "host": [
+                        "{{staging_base_v3}}"
+                    ],
+                    "path": [
+                        "{{users}}",
+                        "api",
+                        "v1",
+                        "lessons"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "show",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{staging_base_v3}}/{{users}}/api/v1/lessons/1",
+                    "host": [
+                        "{{staging_base_v3}}"
+                    ],
+                    "path": [
+                        "{{users}}",
+                        "api",
+                        "v1",
+                        "lessons",
+                        "1"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "store",
+            "request": {
+                "auth": {
+                    "type": "oauth2",
+                    "oauth2": [
+                        {
+                            "key": "addTokenTo",
+                            "value": "header",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n           \"id\": \"\",\r\n           \"video_path\": \"\",\r\n           \"course_id\": \"\"\r\n        }",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{staging_base_v3}}/{{users}}/api/v1/lessons",
+                    "host": [
+                        "{{staging_base_v3}}"
+                    ],
+                    "path": [
+                        "{{users}}",
+                        "api",
+                        "v1",
+                        "lessons"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "update",
+            "request": {
+                "auth": {
+                    "type": "oauth2",
+                    "oauth2": [
+                        {
+                            "key": "addTokenTo",
+                            "value": "header",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n           \"id\": \"\",\r\n           \"video_path\": \"\",\r\n           \"course_id\": \"\"\r\n        }",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{staging_base_v3}}/{{users}}/api/v1/lessons/1",
+                    "host": [
+                        "{{staging_base_v3}}"
+                    ],
+                    "path": [
+                        "{{users}}",
+                        "api",
+                        "v1",
+                        "lessons",
+                        "1"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "destroy",
+            "request": {
+                "auth": {
+                    "type": "oauth2",
+                    "oauth2": [
+                        {
+                            "key": "addTokenTo",
+                            "value": "header",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "method": "DELETE",
+                "url": {
+                    "raw": "{{staging_base_v3}}/{{users}}/api/v1/lessons/1",
+                    "host": [
+                        "{{staging_base_v3}}"
+                    ],
+                    "path": [
+                        "{{users}}",
+                        "api",
+                        "v1",
+                        "lessons",
+                        "1"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ]
+
+}],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

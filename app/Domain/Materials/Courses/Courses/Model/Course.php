@@ -2,6 +2,7 @@
 
 namespace App\Domain\Materials\Courses\Courses\Model;
 
+use App\Domain\Lessons\Model\Lesson;
 use App\Domain\Materials\Materials\Model\Material;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\SmartModel;
@@ -30,11 +31,16 @@ class Course extends SmartModel
 
 
     protected $with = [
-        'material'
+        'material','lessons'
     ];
 
     public function material(){
         return $this->belongsTo(Material::class);
+    }
+
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class,'course_id');
     }
 
 }

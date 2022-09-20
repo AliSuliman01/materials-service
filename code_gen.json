@@ -1,10 +1,10 @@
 {
   "tables": [
     {
-      "table_name": "tests",
-      "entity_name": "Test",
-      "instance_name": "test",
-      "base_path": "Layer1\\Layer2\\Layer3",
+      "table_name": "lessons",
+      "entity_name": "Lesson",
+      "instance_name": "lesson",
+      "base_path": "Lessons",
       "operation": "crud",
       "columns": [
         {
@@ -13,14 +13,14 @@
           "validation_rules": "integer|required"
         },
         {
-          "type": "",
-          "name": "",
-          "validation_rules": ""
+          "type": "string",
+          "name": "video_path",
+          "validation_rules": "required|string"
         },
         {
-          "type": "",
-          "name": "",
-          "validation_rules": ""
+          "type": "integer",
+          "name": "course_id",
+          "validation_rules": "required|integer"
         }
       ]
     }

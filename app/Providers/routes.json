@@ -27,6 +27,6 @@
     "routes/Questions/QuestionOptions/QuestionOptions/question_options.php",
     "routes/Questions/QuestionOptions/QuestionOptionTranslation/question_option_translation.php",
     "routes/Questions/QuestionToQuestion/question_to_question.php",
-    "routes/Questions/QuestionCategory/question_category.php"
-
+    "routes/Questions/QuestionCategory/question_category.php",
+    "routes/Lessons/lessons.php"
 ]

@@ -24,7 +24,8 @@ use Illuminate\Support\Facades\DB;
 
 class CoursesController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
         return response()->json(success((new GetAllCoursessVM())->toArray()));
     }
@@ -34,10 +35,11 @@ class CoursesController extends Controller
         return response()->json(
             [
                 'levels' => Level::with('translation')->get(),
-                'categories' => Category::query()->whereRelation('parent','id','=',10)->get()
+                'categories' => Category::query()->whereRelation('parent', 'id', '=', 10)->get()
             ]
         );
     }
+
     public function search(CourseSearchRequest $request)
     {
         $data = $request->validated();
@@ -45,27 +47,29 @@ class CoursesController extends Controller
         $courses = Material::with(['course']);
 
         if (isset($data['level_id']))
-            $courses->where('level_id','=',$data['level_id']);
+            $courses->where('level_id', '=', $data['level_id']);
 
         if (isset($data['name']))
-            $courses->whereRelation('translations','name','like',"%{$data['name']}%");
+            $courses->whereRelation('translations', 'name', 'like', "%{$data['name']}%");
 
         if (isset($data['categories']) && count($data['categories']) > 0)
-            $courses->whereHas('categories',function($categoryQuery) use($data) {
-                    $categoryQuery->whereIn('categories.id',$data['categories']);
-                });
+            $courses->whereHas('categories', function ($categoryQuery) use ($data) {
+                $categoryQuery->whereIn('categories.id', $data['categories']);
+            });
 
         return response()->json(success($courses->get()));
-}
+    }
 
-    public function show(Course $course){
+    public function show(Course $course)
+    {
 
         return response()->json(success((new GetCoursesVM($course))->toArray()));
     }
 
-    public function store(StoreCoursesRequest $request){
+    public function store(StoreCoursesRequest $request)
+    {
 
-        $data = $request->validated() ;
+        $data = $request->validated();
 
         $course = DB::transaction(function () use ($data) {
 
@@ -81,9 +85,10 @@ class CoursesController extends Controller
         return response()->json(success((new GetCoursesVM($course))->toArray()));
     }
 
-    public function update(Course $course, UpdateCoursesRequest $request){
+    public function update(Course $course, UpdateCoursesRequest $request)
+    {
 
-        $data = $request->validated() ;
+        $data = $request->validated();
         $course = DB::transaction(function () use ($course, $data) {
 
             $material = UpdateMaterialAction::execute($course->material, MaterialDTO::fromRequest($data));
@@ -98,7 +103,8 @@ class CoursesController extends Controller
         return response()->json(success((new GetCoursesVM($course))->toArray()));
     }
 
-    public function destroy(Course $course){
+    public function destroy(Course $course)
+    {
 
         return response()->json(success(DestroyCoursesAction::execute($course)));
     }
