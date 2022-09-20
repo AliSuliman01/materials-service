@@ -35,6 +35,8 @@ class PageController extends Controller
 
         $page = StorePageAction::execute($pageDTO);
 
+        $page->categories()->sync($data['categories'] ?? []);
+
         return response()->json(success((new GetPageVM($page))->toArray()));
     }
 
@@ -45,6 +47,8 @@ class PageController extends Controller
         $pageDTO = PageDTO::fromRequest($data);
 
         $page = UpdatePageAction::execute($page, $pageDTO);
+
+        $page->categories()->sync($data['categories'] ?? []);
 
         return response()->json(success((new GetPageVM($page))->toArray()));
     }
