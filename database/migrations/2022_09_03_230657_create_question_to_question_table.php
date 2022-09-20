@@ -16,8 +16,8 @@ return new class extends Migration {
         try {
             Schema::create('question_to_question', function (Blueprint $table) {
                 $table->id();
-                $table->foreignId('prev_question_id')->constrained();
-                $table->foreignId('next_question_id')->constrained();
+                $table->foreignId('prev_question_id')->constrained('questions', 'id');
+                $table->foreignId('next_question_id')->constrained('questions', 'id');
                 $table->timestamps();
                 $table->softDeletes();
                 $table->unsignedBigInteger('created_by_user_id')->nullable();
