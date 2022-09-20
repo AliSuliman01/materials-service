@@ -57,7 +57,7 @@ class Category extends SmartModel
 
     public function materials()
     {
-        return $this->belongsToMany(Material::class, 'material_category')
+        return $this->belongsToMany(Material::class, 'material_category','category_id', 'material_id')
                     ->using(MaterialCategory::class);
     }
 

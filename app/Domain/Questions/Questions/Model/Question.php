@@ -5,14 +5,13 @@ namespace App\Domain\Questions\Questions\Model;
 use App\Domain\Questions\QuestionCategory\Model\QuestionCategory;
 use App\Domain\Questions\QuestionOptions\QuestionOptions\Model\QuestionOption;
 use App\Domain\Questions\QuestionTranslation\Model\QuestionTranslation;
-use App\Http\Traits\Features\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Question extends Model
 {
-    use HasFactory, SoftDeletes, HasTranslations;
+    use HasFactory, SoftDeletes;
 
     protected $guarded = [
         'id',
