@@ -30,6 +30,15 @@ class Category extends SmartModel
     protected $with = [
         'translation'
     ];
+
+    public function featured_materials()
+    {
+        return  $this->materials()->where('is_featured',true);
+    }
+    public function recommended_materials()
+    {
+        return  $this->materials()->where('is_featured', false);
+    }
     public function translations()
     {
         return $this->hasMany(CategoryTranslation::class,'category_id');

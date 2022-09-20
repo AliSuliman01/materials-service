@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Schema;
 |
 */
 
-Route::get('get_table_data/{table_name}',function(Request $request){
+    Route::get('get_table_data/{table_name}',function(Request $request){
     $columns = Schema::getColumnListing(\request()->route()->table_name);
     $items = DB::table(\request()->route()->table_name)->get();
     $ths = "";

@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Pages;
 
 
+use App\Domain\Categories\Categories\Model\Category;
 use App\Http\Controllers\Controller;
 use App\Domain\Pages\Model\Page;
 use App\Domain\Pages\Actions\StorePageAction;
@@ -22,6 +23,12 @@ class PageController extends Controller
         return response()->json(success((new GetAllPagesVM())->toArray()));
     }
 
+    public function home_page()
+    {
+        return Category::with(['featured_materials','recommended_materials'])->whereHas('parent',function($query){
+            $query->whereRelation('translations','name','=','navbar');
+        })->get();
+    }
     public function show(Page $page){
 
         return response()->json((new GetPageVM($page))->toArray());
