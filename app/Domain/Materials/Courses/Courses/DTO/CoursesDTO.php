@@ -10,14 +10,20 @@ class CoursesDTO extends DataTransferObject
 {
 
 	/* @var integer|null */
-	public $id;
+	public $material_id;
 
 
     public static function fromRequest($request)
     {
         return new self([
-			'id'				=> $request['id'] ?? null ,
+			'material_id'				=> $request['material_id'] ?? null ,
 
         ]);
+    }
+
+    public function setId($id)
+    {
+        $this->material_id = $id;
+        return $this;
     }
 }

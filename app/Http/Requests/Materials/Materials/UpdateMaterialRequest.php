@@ -12,7 +12,7 @@ class UpdateMaterialRequest extends FormRequest
     {
         return [
             'duration' => 'integer|required',
-            'level_id' => 'integer|required',
+            'level_id' => 'integer|required|exists:levels,id,deleted_at,NULL',
             'translations' => 'required|array',
             'translations.*.id' => 'required|exists:material_translations,id,deleted_at,NULL',
             'translations.*.language_code' => 'required|exists:languages,id,deleted_at,NULL',

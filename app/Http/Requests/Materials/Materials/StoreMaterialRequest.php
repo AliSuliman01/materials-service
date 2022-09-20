@@ -11,7 +11,7 @@ class StoreMaterialRequest extends ApiFormRequest
     {
         return [
 			'duration'				=> 'integer|required' ,
-			'level_id'				=> 'integer|required' ,
+			'level_id'				=> 'integer|required|exists:levels,id,deleted_at,NULL' ,
             'translations' => 'required|array',
             'translations.*.language_code' => 'required',
             'translations.*.name' => 'required|string',
