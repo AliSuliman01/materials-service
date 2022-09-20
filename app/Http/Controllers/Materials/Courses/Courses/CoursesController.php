@@ -50,7 +50,7 @@ class CoursesController extends Controller
         if (isset($data['name']))
             $courses->whereRelation('translations','name','like',"%{$data['name']}%");
 
-        if (isset($data['categories']))
+        if (isset($data['categories']) && count($data['categories']) > 0)
             $courses->whereHas('categories',function($categoryQuery) use($data) {
                     $categoryQuery->whereIn('categories.id',$data['categories']);
                 });
