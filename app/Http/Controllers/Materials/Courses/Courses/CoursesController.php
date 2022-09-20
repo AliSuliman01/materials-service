@@ -8,6 +8,7 @@ use App\Domain\Levels\Levels\Model\Level;
 use App\Domain\Materials\Materials\Actions\StoreMaterialAction;
 use App\Domain\Materials\Materials\Actions\UpdateMaterialAction;
 use App\Domain\Materials\Materials\DTO\MaterialDTO;
+use App\Domain\Materials\Materials\Model\Material;
 use App\Http\Controllers\Controller;
 use App\Domain\Materials\Courses\Courses\Model\Course;
 use App\Domain\Materials\Courses\Courses\Actions\StoreCoursesAction;
@@ -41,22 +42,19 @@ class CoursesController extends Controller
     {
         $data = $request->validated();
 
-        $courses = Course::query();
+        $courses = Material::with(['course']);
 
         if (isset($data['level_id']))
             $courses->where('level_id','=',$data['level_id']);
 
         if (isset($data['name']))
-            $courses->whereHas('material',function($query) use($data) {
-                $query->whereRelation('translations','name','like',"%{$data['name']}%");
-            });
+            $courses->whereRelation('translations','name','like',"%{$data['name']}%");
 
         if (isset($data['categories']))
-            $courses->whereHas('material',function($materialQuery) use($data) {
-                $materialQuery->whereHas('categories',function($categoryQuery) use($data) {
+            $courses->whereHas('categories',function($categoryQuery) use($data) {
                     $categoryQuery->whereIn('id',$data['categories']);
                 });
-            });
+
         return response()->json(success($courses->get()));
 }
 
